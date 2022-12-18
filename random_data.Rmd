@@ -96,7 +96,7 @@ compute_difference_of_sample_props = function(n, N, baseSample) {
   }
   
   value = NULL
-  statistic = NULL  
+  statistic = NULL
   labels = c('p0 -p1', 'p0 - p2', 'p0 - p3', 'p0 - p4', 'p1 - p2', 
              'p1 - p3', 'p1 - p4', 'p2 - p3', 'p2 - p4', 'p3 - p4')
   for (i in 1:10) {
@@ -119,6 +119,8 @@ plot_and_CI95 = function(plotdf, propdf, sampleType) {
              subtitle=str_interp('Sample: ${sampleType}'), 
              fill='Difference of\nsample proportion',
              x='Bootstrap statistic', y='Count') +
+        # xlim(-0.1, 0.4) + 
+        # ylim(0, 400) + 
         theme_minimal()
   
   CI = c(0.025, 0.975)
@@ -151,7 +153,7 @@ converting to a 5-state system.
 res = compute_difference_of_sample_props(n=100000, 
                                          N=1000, 
                                          baseSample=strsplit(
-                                           readLines('./encoded_text3.txt'),
+                                           readLines('./encoded_text1.txt'),
                                            '')[[1]]
                                          )
 plot_and_CI95(res$plotdf, res$propdf, 'actual text')
